@@ -1,8 +1,10 @@
+use std::fs::File;
+use std::io::Write;
 use std::process::Command;
 
-pub fn run(command: &str, silent: bool) {
-    let split = command.split(" ").collect::<Vec<&str>>();
+use sanitize_filename;
 
+pub fn run(command: &str, silent: bool) {
     if !silent {
         println!("Running '{}'", command);
     }
@@ -15,4 +17,12 @@ pub fn run(command: &str, silent: bool) {
 
     let stdout = cmd.stdout;
     let stderr = cmd.stderr;
+
+    let filename = sanitize_filename::sanitize(command);
+
+    let mut f = File::create(format!("{}.out.log", filename)).unwrap();
+    f.write_all(&stdout).unwrap();
+
+    let mut f = File::create(format!("{}.err.log", filename)).unwrap();
+    f.write_all(&stderr).unwrap();
 }
