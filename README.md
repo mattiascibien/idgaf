@@ -1,4 +1,4 @@
-# idgaf - for when you don't care about a commands output
+# idgaf - for when you don't care about the output of a command
 
 `idgaf` is a program that can be used to completely ignore console output
 and have it instead redirected into two log files: one for stantdard output and one for standard error.
