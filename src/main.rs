@@ -12,8 +12,17 @@ fn main() {
     let matches = App::new(APP_NAME)
         .author(AUTHOR)
         .version(VERSION)
-        .arg(Arg::with_name(COMMAND_ARG).required(true))
-        .arg(Arg::with_name("silent").short("s").long("silent"))
+        .arg(
+            Arg::with_name(COMMAND_ARG)
+                .required(true)
+                .help("The command to execute "),
+        )
+        .arg(
+            Arg::with_name("silent")
+                .short("s")
+                .long("silent")
+                .help("Suppress even idgaf output. For added silence"),
+        )
         .get_matches();
 
     if matches.is_present("command") {

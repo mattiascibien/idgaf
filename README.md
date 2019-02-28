@@ -10,13 +10,13 @@ idgaf 0.1.0
 Mattias Cibien <mattias@mattiascibien.net>
 
 USAGE:
-    idgaf [FLAGS] <command>
+    idgaf.exe [FLAGS] <command>
 
 FLAGS:
     -h, --help       Prints help information
-    -s, --silent
+    -s, --silent     Suppress even idgaf output. For added silence
     -V, --version    Prints version information
 
 ARGS:
-    <command>
+    <command>    The command to execute
 ```
