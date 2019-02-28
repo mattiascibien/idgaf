@@ -20,3 +20,5 @@ FLAGS:
 ARGS:
     <command>    The command to execute
 ```
+
+When invoked it creates two log files in the current directory named <command>.out.log for stdout and <command>.err.log for standard error.
