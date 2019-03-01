@@ -7,3 +7,4 @@ edition = "2018"
 [dependencies]
 clap = "2.32"
 sanitize-filename = "0.2"
+pentry = "0.1"
