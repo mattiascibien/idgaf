@@ -3,6 +3,7 @@ const APP_NAME: &'static str = env!("CARGO_PKG_NAME");
 const AUTHOR: &'static str = env!("CARGO_PKG_AUTHORS");
 
 const COMMAND_ARG: &'static str = "command";
+const VERBOSE_ARG: &'static str = "verbose";
 
 use clap::{App, Arg};
 
@@ -18,17 +19,17 @@ fn main() {
                 .help("The command to execute "),
         )
         .arg(
-            Arg::with_name("silent")
-                .short("s")
-                .long("silent")
-                .help("Suppress even idgaf output. For added silence"),
+            Arg::with_name(VERBOSE_ARG)
+                .short("v")
+                .long(VERBOSE_ARG)
+                .help("Shows some debug information"),
         )
         .get_matches();
 
-    if matches.is_present("command") {
+    if matches.is_present(COMMAND_ARG) {
         idgaf::run(
-            matches.value_of("command").unwrap(),
-            matches.is_present("silent"),
+            matches.value_of(COMMAND_ARG).unwrap(),
+            matches.is_present(VERBOSE_ARG),
         );
     }
 }

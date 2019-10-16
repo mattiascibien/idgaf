@@ -4,11 +4,11 @@ use std::process::Command;
 
 use sanitize_filename;
 
-pub fn run(command: &str, silent: bool) {
+pub fn run(command: &str, verbose: bool) {
     if let Ok(ps) = pentry::current() {
         let parent_executable = ps.parent().unwrap();
 
-        if !silent {
+        if verbose {
             println!("Running '{}' using {}", command, parent_executable.name());
         }
 
@@ -28,6 +28,14 @@ pub fn run(command: &str, silent: bool) {
 
         let mut f = File::create(format!("{}.err.log", filename)).unwrap();
         f.write_all(&stderr).unwrap();
+
+        if verbose {
+            println!(
+                "Finished running '{}' using {}",
+                command,
+                parent_executable.name()
+            );
+        }
     };
 }
 

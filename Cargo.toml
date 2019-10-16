@@ -1,10 +1,10 @@
 [package]
 name = "idgaf"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Mattias Cibien <mattias@mattiascibien.net>"]
 edition = "2018"
 
 [dependencies]
-clap = "2.32"
+clap = "2.33"
 sanitize-filename = "0.2"
 pentry = "0.1"

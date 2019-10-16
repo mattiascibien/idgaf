@@ -14,8 +14,8 @@ USAGE:
 
 FLAGS:
     -h, --help       Prints help information
-    -s, --silent     Suppress even idgaf output. For added silence
     -V, --version    Prints version information
+    -v, --verbose    Shows some debug information
 
 ARGS:
     <command>    The command to execute
