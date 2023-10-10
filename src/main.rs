@@ -1,35 +1,30 @@
-const VERSION: &'static str = env!("CARGO_PKG_VERSION");
-const APP_NAME: &'static str = env!("CARGO_PKG_NAME");
-const AUTHOR: &'static str = env!("CARGO_PKG_AUTHORS");
-
 const COMMAND_ARG: &'static str = "command";
 const VERBOSE_ARG: &'static str = "verbose";
 
-use clap::{App, Arg};
+use clap::{command, Arg, ArgAction};
 
 mod idgaf;
 
 fn main() {
-    let matches = App::new(APP_NAME)
-        .author(AUTHOR)
-        .version(VERSION)
+    let matches = command!()
         .arg(
-            Arg::with_name(COMMAND_ARG)
+            Arg::new(COMMAND_ARG)
                 .required(true)
                 .help("The command to execute "),
         )
         .arg(
-            Arg::with_name(VERBOSE_ARG)
-                .short("v")
+            Arg::new(VERBOSE_ARG)
+                .short('v')
                 .long(VERBOSE_ARG)
+                .action(ArgAction::SetTrue)
                 .help("Shows some debug information"),
         )
         .get_matches();
 
-    if matches.is_present(COMMAND_ARG) {
+    if matches.contains_id(COMMAND_ARG) {
         idgaf::run(
-            matches.value_of(COMMAND_ARG).unwrap(),
-            matches.is_present(VERBOSE_ARG),
+            matches.get_one::<String>(COMMAND_ARG).unwrap(),
+            matches.get_flag(VERBOSE_ARG),
         );
     }
 }
