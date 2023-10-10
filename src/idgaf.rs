@@ -39,7 +39,7 @@ pub fn run(command: &str, verbose: bool) {
     };
 }
 
-fn get_run_command_parameter(shell: &str) -> &'static str {
+fn get_run_command_parameter<'a>(shell: &'a str) -> &'a str {
     if shell.starts_with("powershell") || shell.starts_with("pwsh") {
         "-command"
     } else if shell.starts_with("cmd") {
