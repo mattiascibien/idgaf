@@ -44,7 +44,7 @@ fn get_run_command_parameter(shell: &str) -> &'static str {
         "-command"
     } else if shell.starts_with("cmd") {
         "/c"
-    } else if shell.starts_with("bash") || shell.starts_with("sh") {
+    } else if shell.starts_with("bash") || shell.starts_with("sh") || shell.starts_with("zsh") {
         "-c"
     } else {
         panic!("shell {} not supported", shell);
